@@ -1,0 +1,26 @@
+{
+  "pfdTest2App": {
+    "mOC": {
+      "home": {
+        "title": "MOCS",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau MOC",
+        "createOrEditLabel": "Créer ou éditer un MOC",
+        "notFound": "Aucun MOC trouvé"
+      },
+      "created": "Un nouveau MOC a été créé avec l'identifiant {{ param }}",
+      "updated": "Le MOC avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le MOC avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le MOC {{ id }} ?"
+      },
+      "detail": {
+        "title": "MOC"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "reactor": "Reactor"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "applications": "*",
+  "changelogDate": "20230721045358",
+  "entityTableName": "moc",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "name": "MOC",
+  "relationships": [],
+  "searchEngine": "no"
+}

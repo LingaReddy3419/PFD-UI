@@ -1,0 +1,70 @@
+{
+  "applications": "*",
+  "changelogDate": "20230721045359",
+  "entityTableName": "reactor",
+  "fields": [
+    {
+      "fieldName": "workingVolume",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "vesselId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bottomImpellerStirringVolume",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "minimumTempSensingVolume",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "name": "Reactor",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "unit",
+      "relationshipName": "unit",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "block",
+      "relationshipName": "block",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "mOC",
+      "relationshipName": "moc",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "impellerType",
+      "relationshipName": "impellerType",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "image",
+      "relationshipName": "image",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "video",
+      "relationshipName": "video",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "document",
+      "relationshipName": "document",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

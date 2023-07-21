@@ -1,0 +1,26 @@
+{
+  "applications": "*",
+  "changelogDate": "20230721045356",
+  "entityTableName": "image",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Image",
+  "relationships": [],
+  "searchEngine": "no"
+}

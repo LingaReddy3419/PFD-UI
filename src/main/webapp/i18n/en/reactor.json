@@ -1,0 +1,34 @@
+{
+  "pfdTest2App": {
+    "reactor": {
+      "home": {
+        "title": "Reactors",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Reactor",
+        "createOrEditLabel": "Create or edit a Reactor",
+        "notFound": "No Reactors found"
+      },
+      "created": "A new Reactor is created with identifier {{ param }}",
+      "updated": "A Reactor is updated with identifier {{ param }}",
+      "deleted": "A Reactor is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Reactor {{ id }}?"
+      },
+      "detail": {
+        "title": "Reactor"
+      },
+      "id": "ID",
+      "workingVolume": "Working Volume",
+      "vesselId": "Vessel Id",
+      "bottomImpellerStirringVolume": "Bottom Impeller Stirring Volume",
+      "minimumTempSensingVolume": "Minimum Temp Sensing Volume",
+      "unit": "Unit",
+      "block": "Block",
+      "moc": "Moc",
+      "impellerType": "Impeller Type",
+      "image": "Image",
+      "video": "Video",
+      "document": "Document"
+    }
+  }
+}

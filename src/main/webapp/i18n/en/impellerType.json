@@ -1,0 +1,26 @@
+{
+  "pfdTest2App": {
+    "impellerType": {
+      "home": {
+        "title": "Impeller Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Impeller Type",
+        "createOrEditLabel": "Create or edit a Impeller Type",
+        "notFound": "No Impeller Types found"
+      },
+      "created": "A new Impeller Type is created with identifier {{ param }}",
+      "updated": "A Impeller Type is updated with identifier {{ param }}",
+      "deleted": "A Impeller Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Impeller Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Impeller Type"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "reactor": "Reactor"
+    }
+  }
+}

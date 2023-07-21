@@ -1,0 +1,26 @@
+{
+  "pfdTest2App": {
+    "block": {
+      "home": {
+        "title": "Blocks",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Block",
+        "createOrEditLabel": "Créer ou éditer un Block",
+        "notFound": "Aucun Block trouvé"
+      },
+      "created": "Un nouveau Block a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Block avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Block avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Block {{ id }} ?"
+      },
+      "detail": {
+        "title": "Block"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "reactor": "Reactor"
+    }
+  }
+}
