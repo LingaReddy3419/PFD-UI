@@ -1,0 +1,26 @@
+{
+  "pfdTest2App": {
+    "modeOfCharging": {
+      "home": {
+        "title": "Mode Of Chargings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mode Of Charging",
+        "createOrEditLabel": "Create or edit a Mode Of Charging",
+        "notFound": "No Mode Of Chargings found"
+      },
+      "created": "A new Mode Of Charging is created with identifier {{ param }}",
+      "updated": "A Mode Of Charging is updated with identifier {{ param }}",
+      "deleted": "A Mode Of Charging is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mode Of Charging {{ id }}?"
+      },
+      "detail": {
+        "title": "Mode Of Charging"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "general": "General"
+    }
+  }
+}

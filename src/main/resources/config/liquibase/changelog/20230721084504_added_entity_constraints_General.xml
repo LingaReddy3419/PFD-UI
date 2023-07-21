@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity General.
+    -->
+    <changeSet id="20230721084504-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="operations_id"
+                                 baseTableName="general"
+                                 constraintName="fk_general__operations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="operations"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="action_id"
+                                 baseTableName="general"
+                                 constraintName="fk_general__action_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="action"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="mode_of_charging_id"
+                                 baseTableName="general"
+                                 constraintName="fk_general__mode_of_charging_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="mode_of_charging"
+                                 />
+    </changeSet>
+</databaseChangeLog>

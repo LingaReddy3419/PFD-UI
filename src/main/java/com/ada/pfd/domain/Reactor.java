@@ -26,6 +26,9 @@ public class Reactor implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "autoGenerator")
+    private long sNo;
+
     @Column(name = "working_volume", precision = 21, scale = 2)
     private BigDecimal workingVolume;
 
@@ -58,16 +61,19 @@ public class Reactor implements Serializable {
     @JoinColumn(unique = true)
     private ImpellerType impellerType;
 
+    @Lob
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "reactor")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "reactor" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
 
+    @Lob
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "reactor")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "reactor" }, allowSetters = true)
     private Set<Video> videos = new HashSet<>();
 
+    @Lob
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "reactor")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "reactor" }, allowSetters = true)
@@ -138,6 +144,14 @@ public class Reactor implements Serializable {
 
     public void setMinimumTempSensingVolume(BigDecimal minimumTempSensingVolume) {
         this.minimumTempSensingVolume = minimumTempSensingVolume;
+    }
+
+    public long getsNo() {
+        return sNo;
+    }
+
+    public void setsNo(long sNo) {
+        this.sNo = sNo;
     }
 
     public Unit getUnit() {

@@ -1,0 +1,26 @@
+{
+  "pfdTest2App": {
+    "modeOfCharging": {
+      "home": {
+        "title": "ModeOfChargings",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Mode Of Charging",
+        "createOrEditLabel": "Créer ou éditer un Mode Of Charging",
+        "notFound": "Aucun Mode Of Charging trouvé"
+      },
+      "created": "Un nouveau Mode Of Charging a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Mode Of Charging avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Mode Of Charging avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Mode Of Charging {{ id }} ?"
+      },
+      "detail": {
+        "title": "Mode Of Charging"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "general": "General"
+    }
+  }
+}

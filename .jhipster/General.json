@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230721084504",
+  "entityTableName": "general",
+  "fields": [],
+  "name": "General",
+  "relationships": [
+    {
+      "otherEntityName": "operations",
+      "relationshipName": "operations",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "action",
+      "relationshipName": "action",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "modeOfCharging",
+      "relationshipName": "modeOfCharging",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

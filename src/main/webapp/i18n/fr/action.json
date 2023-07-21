@@ -1,0 +1,29 @@
+{
+  "pfdTest2App": {
+    "action": {
+      "home": {
+        "title": "Actions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Action",
+        "createOrEditLabel": "Créer ou éditer un Action",
+        "notFound": "Aucun Action trouvé"
+      },
+      "created": "Un nouveau Action a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Action avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Action avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Action {{ id }} ?"
+      },
+      "detail": {
+        "title": "Action"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "param1": "Param 1",
+      "param2": "Param 2",
+      "param3": "Param 3",
+      "general": "General"
+    }
+  }
+}

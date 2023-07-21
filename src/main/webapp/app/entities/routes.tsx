@@ -11,6 +11,10 @@ import MOC from './moc';
 import Reactor from './reactor';
 import Unit from './unit';
 import Video from './video';
+import Action from './action';
+import General from './general';
+import ModeOfCharging from './mode-of-charging';
+import Operations from './operations';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 export default () => {
@@ -26,6 +30,10 @@ export default () => {
         <Route path="reactor/*" element={<Reactor />} />
         <Route path="unit/*" element={<Unit />} />
         <Route path="video/*" element={<Video />} />
+        <Route path="action/*" element={<Action />} />
+        <Route path="general/*" element={<General />} />
+        <Route path="mode-of-charging/*" element={<ModeOfCharging />} />
+        <Route path="operations/*" element={<Operations />} />
         {/* jhipster-needle-add-route-path - JHipster will add routes here */}
       </ErrorBoundaryRoutes>
     </div>

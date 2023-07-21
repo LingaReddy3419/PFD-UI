@@ -59,6 +59,10 @@ public class CacheConfiguration {
             createCache(cm, com.ada.pfd.domain.Reactor.class.getName() + ".documents");
             createCache(cm, com.ada.pfd.domain.Unit.class.getName());
             createCache(cm, com.ada.pfd.domain.Video.class.getName());
+            createCache(cm, com.ada.pfd.domain.Action.class.getName());
+            createCache(cm, com.ada.pfd.domain.General.class.getName());
+            createCache(cm, com.ada.pfd.domain.ModeOfCharging.class.getName());
+            createCache(cm, com.ada.pfd.domain.Operations.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

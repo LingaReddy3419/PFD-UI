@@ -1,0 +1,26 @@
+{
+  "pfdTest2App": {
+    "operations": {
+      "home": {
+        "title": "Operations",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Operations",
+        "createOrEditLabel": "Créer ou éditer un Operations",
+        "notFound": "Aucun Operations trouvé"
+      },
+      "created": "Un nouveau Operations a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Operations avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Operations avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Operations {{ id }} ?"
+      },
+      "detail": {
+        "title": "Operations"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "general": "General"
+    }
+  }
+}

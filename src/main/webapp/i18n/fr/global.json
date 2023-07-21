@@ -15,6 +15,10 @@
         "reactor": "Reactor",
         "unit": "Unit",
         "video": "Video",
+        "action": "Action",
+        "general": "General",
+        "modeOfCharging": "Mode Of Charging",
+        "operations": "Operations",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20230721084503",
+  "entityTableName": "action",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "param1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "param2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "param3",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Action",
+  "relationships": [],
+  "searchEngine": "no"
+}
