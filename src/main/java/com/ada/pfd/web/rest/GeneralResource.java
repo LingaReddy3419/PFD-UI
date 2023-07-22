@@ -1,7 +1,10 @@
 package com.ada.pfd.web.rest;
 
 import com.ada.pfd.domain.General;
+import com.ada.pfd.repository.ActionRepository;
 import com.ada.pfd.repository.GeneralRepository;
+import com.ada.pfd.repository.ModeOfChargingRepository;
+import com.ada.pfd.repository.OperationsRepository;
 import com.ada.pfd.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -33,9 +36,20 @@ public class GeneralResource {
     private String applicationName;
 
     private final GeneralRepository generalRepository;
+    private final OperationsRepository operationsRepository;
+    private final ActionRepository actionRepository;
+    private final ModeOfChargingRepository modeOfChargingRepository;
 
-    public GeneralResource(GeneralRepository generalRepository) {
+    public GeneralResource(
+        GeneralRepository generalRepository,
+        OperationsRepository operationsRepository,
+        ActionRepository actionRepository,
+        ModeOfChargingRepository modeOfChargingRepository
+    ) {
         this.generalRepository = generalRepository;
+        this.operationsRepository = operationsRepository;
+        this.actionRepository = actionRepository;
+        this.modeOfChargingRepository = modeOfChargingRepository;
     }
 
     /**
@@ -51,6 +65,7 @@ public class GeneralResource {
         if (general.getId() != null) {
             throw new BadRequestAlertException("A new general cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
         General result = generalRepository.save(general);
         return ResponseEntity
             .created(new URI("/api/generals/" + result.getId()))

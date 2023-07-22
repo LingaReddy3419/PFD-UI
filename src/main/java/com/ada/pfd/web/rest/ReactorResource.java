@@ -1,7 +1,7 @@
 package com.ada.pfd.web.rest;
 
 import com.ada.pfd.domain.Reactor;
-import com.ada.pfd.repository.ReactorRepository;
+import com.ada.pfd.repository.*;
 import com.ada.pfd.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -40,8 +39,23 @@ public class ReactorResource {
 
     private final ReactorRepository reactorRepository;
 
-    public ReactorResource(ReactorRepository reactorRepository) {
+    private final UnitRepository unitRepository;
+    private final MOCRepository mocRepository;
+    private final BlockRepository blockRepository;
+    private final ImpellerTypeRepository impellerTypeRepository;
+
+    public ReactorResource(
+        ReactorRepository reactorRepository,
+        UnitRepository unitRepository,
+        MOCRepository mocRepository,
+        BlockRepository blockRepository,
+        ImpellerTypeRepository impellerTypeRepository
+    ) {
         this.reactorRepository = reactorRepository;
+        this.unitRepository = unitRepository;
+        this.mocRepository = mocRepository;
+        this.blockRepository = blockRepository;
+        this.impellerTypeRepository = impellerTypeRepository;
     }
 
     /**
@@ -57,6 +71,7 @@ public class ReactorResource {
         if (reactor.getId() != null) {
             throw new BadRequestAlertException("A new reactor cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
         Reactor result = reactorRepository.save(reactor);
         return ResponseEntity
             .created(new URI("/api/reactors/" + result.getId()))

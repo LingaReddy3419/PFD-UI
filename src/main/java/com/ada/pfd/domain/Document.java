@@ -39,7 +39,17 @@ public class Document implements Serializable {
     @JsonIgnoreProperties(value = { "unit", "block", "moc", "impellerType", "images", "videos", "documents" }, allowSetters = true)
     private Reactor reactor;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "action", "operations", "modeOfCharging", "images", "videos", "documents" }, allowSetters = true)
+    private General general;
+
+    public General getGeneral() {
+        return general;
+    }
+
+    public void setGeneral(General general) {
+        this.general = general;
+    }
 
     public Long getId() {
         return this.id;

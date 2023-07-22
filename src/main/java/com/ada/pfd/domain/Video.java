@@ -35,9 +35,21 @@ public class Video implements Serializable {
     @Column(name = "url")
     private String url;
 
+    public General getGeneral() {
+        return general;
+    }
+
+    public void setGeneral(General general) {
+        this.general = general;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "unit", "block", "moc", "impellerType", "images", "videos", "documents" }, allowSetters = true)
     private Reactor reactor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "action", "operations", "modeOfCharging", "images", "videos", "documents" }, allowSetters = true)
+    private General general;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 

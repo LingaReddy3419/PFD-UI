@@ -3,6 +3,8 @@ package com.ada.pfd.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -24,24 +26,61 @@ public class General implements Serializable {
     private Long id;
 
     @JsonIgnoreProperties(value = { "general" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(unique = true)
     private Operations operations;
 
     @JsonIgnoreProperties(value = { "general" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(unique = true)
     private Action action;
 
     @JsonIgnoreProperties(value = { "general" }, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(unique = true)
     private ModeOfCharging modeOfCharging;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "general", cascade = CascadeType.PERSIST)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "general" }, allowSetters = true)
+    private Set<Image> images = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "general", cascade = CascadeType.PERSIST)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "general" }, allowSetters = true)
+    private Set<Video> videos = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "general", cascade = CascadeType.PERSIST)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "general" }, allowSetters = true)
+    private Set<Document> documents = new HashSet<>();
 
     public Long getId() {
         return this.id;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public Set<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(Set<Document> documents) {
+        this.documents = documents;
+    }
+
+    public Set<Video> getVideos() {
+        return videos;
+    }
+
+    public void setVideos(Set<Video> videos) {
+        this.videos = videos;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
     }
 
     public General id(Long id) {
@@ -92,8 +131,6 @@ public class General implements Serializable {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -107,7 +144,6 @@ public class General implements Serializable {
 
     @Override
     public int hashCode() {
-        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
         return getClass().hashCode();
     }
 
