@@ -39,23 +39,8 @@ public class ReactorResource {
 
     private final ReactorRepository reactorRepository;
 
-    private final UnitRepository unitRepository;
-    private final MOCRepository mocRepository;
-    private final BlockRepository blockRepository;
-    private final ImpellerTypeRepository impellerTypeRepository;
-
-    public ReactorResource(
-        ReactorRepository reactorRepository,
-        UnitRepository unitRepository,
-        MOCRepository mocRepository,
-        BlockRepository blockRepository,
-        ImpellerTypeRepository impellerTypeRepository
-    ) {
+    public ReactorResource(ReactorRepository reactorRepository) {
         this.reactorRepository = reactorRepository;
-        this.unitRepository = unitRepository;
-        this.mocRepository = mocRepository;
-        this.blockRepository = blockRepository;
-        this.impellerTypeRepository = impellerTypeRepository;
     }
 
     /**

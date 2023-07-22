@@ -1,10 +1,7 @@
 package com.ada.pfd.web.rest;
 
 import com.ada.pfd.domain.General;
-import com.ada.pfd.repository.ActionRepository;
 import com.ada.pfd.repository.GeneralRepository;
-import com.ada.pfd.repository.ModeOfChargingRepository;
-import com.ada.pfd.repository.OperationsRepository;
 import com.ada.pfd.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,20 +33,9 @@ public class GeneralResource {
     private String applicationName;
 
     private final GeneralRepository generalRepository;
-    private final OperationsRepository operationsRepository;
-    private final ActionRepository actionRepository;
-    private final ModeOfChargingRepository modeOfChargingRepository;
 
-    public GeneralResource(
-        GeneralRepository generalRepository,
-        OperationsRepository operationsRepository,
-        ActionRepository actionRepository,
-        ModeOfChargingRepository modeOfChargingRepository
-    ) {
+    public GeneralResource(GeneralRepository generalRepository) {
         this.generalRepository = generalRepository;
-        this.operationsRepository = operationsRepository;
-        this.actionRepository = actionRepository;
-        this.modeOfChargingRepository = modeOfChargingRepository;
     }
 
     /**
