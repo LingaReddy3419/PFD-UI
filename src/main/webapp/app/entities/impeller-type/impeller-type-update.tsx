@@ -12,6 +12,7 @@ import { IReactor } from 'app/shared/model/reactor.model';
 import { getEntities as getReactors } from 'app/entities/reactor/reactor.reducer';
 import { IImpellerType } from 'app/shared/model/impeller-type.model';
 import { getEntity, updateEntity, createEntity, reset } from './impeller-type.reducer';
+import '../TableStyles.css';
 
 export const ImpellerTypeUpdate = () => {
   const dispatch = useAppDispatch();
@@ -68,58 +69,85 @@ export const ImpellerTypeUpdate = () => {
         };
 
   return (
-    <div>
+    <div className="table-edit-container">
       <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="pfdTest2App.impellerType.home.createOrEditLabel" data-cy="ImpellerTypeCreateUpdateHeading">
-            <Translate contentKey="pfdTest2App.impellerType.home.createOrEditLabel">Create or edit a ImpellerType</Translate>
-          </h2>
+        <Col md="12">
+          <h4
+            id="pfdTest2App.impellerType.home.createOrEditLabel"
+            data-cy="ImpellerTypeCreateUpdateHeading"
+            className="table-view-edit-heading"
+          >
+            Create or Edit a ImpellerType
+          </h4>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="12">
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
-              {!isNew ? (
+            <div className="table-edit-form-container">
+              <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
+                {!isNew ? (
+                  <ValidatedField
+                    name="id"
+                    required
+                    readOnly
+                    id="impeller-type-id"
+                    label={translate('global.field.id')}
+                    validate={{ required: true }}
+                    style={{ borderRadius: '6px', border: '1px solid #000000', cursor: 'not-allowed' }}
+                    disabled
+                  />
+                ) : null}
                 <ValidatedField
-                  name="id"
-                  required
-                  readOnly
-                  id="impeller-type-id"
-                  label={translate('global.field.id')}
-                  validate={{ required: true }}
+                  label={translate('pfdTest2App.impellerType.title')}
+                  id="impeller-type-title"
+                  name="title"
+                  data-cy="title"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
                 />
-              ) : null}
-              <ValidatedField
-                label={translate('pfdTest2App.impellerType.title')}
-                id="impeller-type-title"
-                name="title"
-                data-cy="title"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('pfdTest2App.impellerType.description')}
-                id="impeller-type-description"
-                name="description"
-                data-cy="description"
-                type="text"
-              />
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/impeller-type" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
-                &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
-              </Button>
-              &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp;
-                <Translate contentKey="entity.action.save">Save</Translate>
-              </Button>
-            </ValidatedForm>
+                <ValidatedField
+                  label={translate('pfdTest2App.impellerType.description')}
+                  id="impeller-type-description"
+                  name="description"
+                  data-cy="description"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                />
+                <div className="table-buttons-container">
+                  <Button
+                    className="border-radius"
+                    tag={Link}
+                    id="cancel-save"
+                    data-cy="entityCreateCancelButton"
+                    to="/impeller-type"
+                    replace
+                    color="secondary"
+                  >
+                    <FontAwesomeIcon icon="arrow-left" />
+                    &nbsp;
+                    <span className="d-none d-md-inline">
+                      <Translate contentKey="entity.action.back">Back</Translate>
+                    </span>
+                  </Button>
+                  &nbsp;
+                  <Button
+                    className="border-radius"
+                    color="success"
+                    id="save-entity"
+                    data-cy="entityCreateSaveButton"
+                    type="submit"
+                    disabled={updating}
+                  >
+                    <FontAwesomeIcon icon="save" />
+                    &nbsp;
+                    <Translate contentKey="entity.action.save">Save</Translate>
+                  </Button>
+                </div>
+              </ValidatedForm>
+            </div>
           )}
         </Col>
       </Row>

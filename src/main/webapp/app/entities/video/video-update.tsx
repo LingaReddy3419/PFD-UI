@@ -12,7 +12,7 @@ import { IReactor } from 'app/shared/model/reactor.model';
 import { getEntities as getReactors } from 'app/entities/reactor/reactor.reducer';
 import { IVideo } from 'app/shared/model/video.model';
 import { getEntity, updateEntity, createEntity, reset } from './video.reducer';
-
+import '../TableStyles.css';
 export const VideoUpdate = () => {
   const dispatch = useAppDispatch();
 
@@ -70,76 +70,114 @@ export const VideoUpdate = () => {
         };
 
   return (
-    <div>
+    <div className="table-edit-container">
       <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="pfdTest2App.video.home.createOrEditLabel" data-cy="VideoCreateUpdateHeading">
-            <Translate contentKey="pfdTest2App.video.home.createOrEditLabel">Create or edit a Video</Translate>
-          </h2>
+        <Col md="12">
+          <h4 className="table-view-edit-heading" id="pfdTest2App.video.home.createOrEditLabel" data-cy="VideoCreateUpdateHeading">
+            Create or Edit a Video
+          </h4>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="12">
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
-              {!isNew ? (
+            <div className="table-edit-form-container">
+              <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
+                {!isNew ? (
+                  <ValidatedField
+                    name="id"
+                    required
+                    readOnly
+                    id="video-id"
+                    label={translate('global.field.id')}
+                    validate={{ required: true }}
+                    style={{ borderRadius: '6px', border: '1px solid #000000', cursor: 'not-allowed' }}
+                    disabled
+                  />
+                ) : null}
                 <ValidatedField
-                  name="id"
-                  required
-                  readOnly
-                  id="video-id"
-                  label={translate('global.field.id')}
-                  validate={{ required: true }}
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                  label={translate('pfdTest2App.video.title')}
+                  id="video-title"
+                  name="title"
+                  data-cy="title"
+                  type="text"
                 />
-              ) : null}
-              <ValidatedField label={translate('pfdTest2App.video.title')} id="video-title" name="title" data-cy="title" type="text" />
-              <ValidatedField
-                label={translate('pfdTest2App.video.description')}
-                id="video-description"
-                name="description"
-                data-cy="description"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('pfdTest2App.video.fileName')}
-                id="video-fileName"
-                name="fileName"
-                data-cy="fileName"
-                type="text"
-              />
-              <ValidatedField label={translate('pfdTest2App.video.url')} id="video-url" name="url" data-cy="url" type="text" />
-              <ValidatedField
-                id="video-reactor"
-                name="reactor"
-                data-cy="reactor"
-                label={translate('pfdTest2App.video.reactor')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {reactors
-                  ? reactors.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/video" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
-                &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
-              </Button>
-              &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp;
-                <Translate contentKey="entity.action.save">Save</Translate>
-              </Button>
-            </ValidatedForm>
+                <ValidatedField
+                  label={translate('pfdTest2App.video.description')}
+                  id="video-description"
+                  name="description"
+                  data-cy="description"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                />
+                <ValidatedField
+                  label={translate('pfdTest2App.video.fileName')}
+                  id="video-fileName"
+                  name="fileName"
+                  data-cy="fileName"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                />
+                <ValidatedField
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                  label={translate('pfdTest2App.video.url')}
+                  id="video-url"
+                  name="url"
+                  data-cy="url"
+                  type="text"
+                />
+                <ValidatedField
+                  id="video-reactor"
+                  name="reactor"
+                  data-cy="reactor"
+                  label={translate('pfdTest2App.video.reactor')}
+                  type="select"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                >
+                  <option value="" key="0" />
+                  {reactors
+                    ? reactors.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+                <div className="table-buttons-container">
+                  <Button
+                    className="border-radius"
+                    color="secondary"
+                    tag={Link}
+                    id="cancel-save"
+                    data-cy="entityCreateCancelButton"
+                    to="/video"
+                    replace
+                  >
+                    <FontAwesomeIcon icon="arrow-left" />
+                    &nbsp;
+                    <span className="d-none d-md-inline">
+                      <Translate contentKey="entity.action.back">Back</Translate>
+                    </span>
+                  </Button>
+                  &nbsp;
+                  <Button
+                    className="border-radius"
+                    color="success"
+                    id="save-entity"
+                    data-cy="entityCreateSaveButton"
+                    type="submit"
+                    disabled={updating}
+                  >
+                    <FontAwesomeIcon icon="save" />
+                    &nbsp;
+                    <Translate contentKey="entity.action.save">Save</Translate>
+                  </Button>
+                </div>
+              </ValidatedForm>
+            </div>
           )}
         </Col>
       </Row>

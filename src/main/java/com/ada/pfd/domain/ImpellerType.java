@@ -10,7 +10,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A ImpellerType.
  */
 @Entity
-@Table(name = "impeller_type")
+@Table(name = "t_impeller_type")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class ImpellerType implements Serializable {

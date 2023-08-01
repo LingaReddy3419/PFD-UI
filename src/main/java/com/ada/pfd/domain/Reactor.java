@@ -13,7 +13,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A Reactor.
  */
 @Entity
-@Table(name = "reactor")
+@Table(name = "t_reactor")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class Reactor implements Serializable {

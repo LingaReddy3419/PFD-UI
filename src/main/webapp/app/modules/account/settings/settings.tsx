@@ -56,6 +56,7 @@ export const SettingsPage = () => {
                 maxLength: { value: 50, message: translate('settings.messages.validate.firstname.maxlength') },
               }}
               data-cy="firstname"
+              style={{ borderRadius: '6px', border: '1px solid #000000', marginBottom: '10px' }}
             />
             <ValidatedField
               name="lastName"
@@ -68,6 +69,7 @@ export const SettingsPage = () => {
                 maxLength: { value: 50, message: translate('settings.messages.validate.lastname.maxlength') },
               }}
               data-cy="lastname"
+              style={{ borderRadius: '6px', border: '1px solid #000000', marginBottom: '10px' }}
             />
             <ValidatedField
               name="email"
@@ -81,15 +83,23 @@ export const SettingsPage = () => {
                 validate: v => isEmail(v) || translate('global.messages.validate.email.invalid'),
               }}
               data-cy="email"
+              style={{ borderRadius: '6px', border: '1px solid #000000', marginBottom: '10px' }}
             />
-            <ValidatedField type="select" id="langKey" name="langKey" label={translate('settings.form.language')} data-cy="langKey">
+            <ValidatedField
+              type="select"
+              id="langKey"
+              name="langKey"
+              label={translate('settings.form.language')}
+              data-cy="langKey"
+              style={{ borderRadius: '6px', border: '1px solid #000000', marginBottom: '10px' }}
+            >
               {locales.map(locale => (
                 <option value={locale} key={locale}>
                   {languages[locale].name}
                 </option>
               ))}
             </ValidatedField>
-            <Button color="primary" type="submit" data-cy="submit">
+            <Button style={{ borderRadius: '6px' }} color="success" type="submit" data-cy="submit">
               <Translate contentKey="settings.form.button">Save</Translate>
             </Button>
           </ValidatedForm>

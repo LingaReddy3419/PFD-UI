@@ -12,22 +12,22 @@ export const BrandIcon = props => (
 );
 
 export const Brand = () => (
-  <NavbarBrand tag={Link} to="/" className="brand-logo">
-    <BrandIcon />
-    <span className="brand-title">
-      <Translate contentKey="global.title">PFD-test2</Translate>
-    </span>
-    <span className="navbar-version">{VERSION}</span>
+  <NavbarBrand tag={Link} to="/" className="brand-logo" style={{ display: 'flex', alignItems: 'center' }}>
+    <img
+      src="https://www.sailife.com/wp-content/uploads/2022/07/sai-social-image-min.jpg"
+      alt="menu-logo"
+      style={{ height: '40px', width: '100%', marginRight: '10px' }}
+    />
+    <span className="brand-title">PFD</span>
+    {/* <span className="navbar-version">{VERSION}</span> */}
   </NavbarBrand>
 );
 
 export const Home = () => (
   <NavItem>
-    <NavLink tag={Link} to="/" className="d-flex align-items-center">
+    <NavLink tag={Link} to="/" className="d-flex align-items-center" style={{ color: '#ffffff' }}>
       <FontAwesomeIcon icon="home" />
-      <span>
-        <Translate contentKey="global.menu.home">Home</Translate>
-      </span>
+      <span>PFD</span>
     </NavLink>
   </NavItem>
 );

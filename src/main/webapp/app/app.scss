@@ -24,14 +24,16 @@ a {
 
 .app-container {
   box-sizing: border-box;
+  // border-radius: 10px;
   .view-container {
     width: 100%;
-    height: calc(100% - 40px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 1rem;
+    // height: calc(100% - 40px);
+    // overflow-y: auto;
+    // overflow-x: hidden;
+    // padding: 1rem;
     .card {
-      padding: 1rem;
+      padding: 2rem;
+      padding-top: 2rem;
     }
     .view-routes {
       height: 100%;

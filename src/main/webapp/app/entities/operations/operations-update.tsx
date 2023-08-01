@@ -12,6 +12,7 @@ import { IGeneral } from 'app/shared/model/general.model';
 import { getEntities as getGenerals } from 'app/entities/general/general.reducer';
 import { IOperations } from 'app/shared/model/operations.model';
 import { getEntity, updateEntity, createEntity, reset } from './operations.reducer';
+import '../TableStyles.css';
 
 export const OperationsUpdate = () => {
   const dispatch = useAppDispatch();
@@ -68,58 +69,85 @@ export const OperationsUpdate = () => {
         };
 
   return (
-    <div>
+    <div className="table-edit-container">
       <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="pfdTest2App.operations.home.createOrEditLabel" data-cy="OperationsCreateUpdateHeading">
-            <Translate contentKey="pfdTest2App.operations.home.createOrEditLabel">Create or edit a Operations</Translate>
-          </h2>
+        <Col md="12">
+          <h4
+            className="table-view-edit-heading"
+            id="pfdTest2App.operations.home.createOrEditLabel"
+            data-cy="OperationsCreateUpdateHeading"
+          >
+            Create or Edit a Operations
+          </h4>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="12">
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
-              {!isNew ? (
+            <div className="table-edit-form-container">
+              <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
+                {!isNew ? (
+                  <ValidatedField
+                    name="id"
+                    required
+                    readOnly
+                    id="operations-id"
+                    label={translate('global.field.id')}
+                    validate={{ required: true }}
+                    style={{ borderRadius: '6px', border: '1px solid #000000', cursor: 'not-allowed' }}
+                    disabled
+                  />
+                ) : null}
                 <ValidatedField
-                  name="id"
-                  required
-                  readOnly
-                  id="operations-id"
-                  label={translate('global.field.id')}
-                  validate={{ required: true }}
+                  label={translate('pfdTest2App.operations.title')}
+                  id="operations-title"
+                  name="title"
+                  data-cy="title"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
                 />
-              ) : null}
-              <ValidatedField
-                label={translate('pfdTest2App.operations.title')}
-                id="operations-title"
-                name="title"
-                data-cy="title"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('pfdTest2App.operations.description')}
-                id="operations-description"
-                name="description"
-                data-cy="description"
-                type="text"
-              />
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/operations" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
-                &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
-              </Button>
-              &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp;
-                <Translate contentKey="entity.action.save">Save</Translate>
-              </Button>
-            </ValidatedForm>
+                <ValidatedField
+                  label={translate('pfdTest2App.operations.description')}
+                  id="operations-description"
+                  name="description"
+                  data-cy="description"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                />
+                <div className="table-buttons-container">
+                  <Button
+                    className="border-radius"
+                    color="secondary"
+                    tag={Link}
+                    id="cancel-save"
+                    data-cy="entityCreateCancelButton"
+                    to="/operations"
+                    replace
+                  >
+                    <FontAwesomeIcon icon="arrow-left" />
+                    &nbsp;
+                    <span className="d-none d-md-inline">
+                      <Translate contentKey="entity.action.back">Back</Translate>
+                    </span>
+                  </Button>
+                  &nbsp;
+                  <Button
+                    className="border-radius"
+                    color="success"
+                    id="save-entity"
+                    data-cy="entityCreateSaveButton"
+                    type="submit"
+                    disabled={updating}
+                  >
+                    <FontAwesomeIcon icon="save" />
+                    &nbsp;
+                    <Translate contentKey="entity.action.save">Save</Translate>
+                  </Button>
+                </div>
+              </ValidatedForm>
+            </div>
           )}
         </Col>
       </Row>

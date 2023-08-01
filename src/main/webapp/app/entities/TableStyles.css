@@ -1,0 +1,80 @@
+.table-main-heading {
+  color: #ffffff;
+  background-color: rgb(98, 123, 173);
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.table-view-container {
+  border: 1px solid grey;
+  width: 50%;
+  margin: auto;
+  border-radius: 6px;
+}
+.table-icon {
+  background-color: transparent;
+  border: none;
+  opacity: 60%;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: blue;
+}
+.red {
+  color: red;
+}
+.border-radius {
+  border-radius: 6px;
+}
+.font-size {
+  font-size: 14px;
+  padding: 2px 2px !important;
+}
+.buttons-padding {
+  padding: 2px 2px !important;
+}
+
+.table-edit-container {
+  border: 1px solid grey;
+  width: 50%;
+  margin: auto;
+  border-radius: 6px;
+}
+.table-view-edit-heading {
+  background-color: rgb(98 123 173);
+  justify-content: center;
+  margin-bottom: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #ffffff;
+  border-radius: 6px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.table-edit-form-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.id-form-field {
+  border-radius: 6px;
+  border: 1px solid #000000;
+  cursor: not-allowed;
+}
+.form-field {
+  border-radius: 6px;
+  border: 1px solid #000000;
+}
+.table-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

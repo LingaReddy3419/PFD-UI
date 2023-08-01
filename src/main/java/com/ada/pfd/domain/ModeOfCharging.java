@@ -10,7 +10,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A ModeOfCharging.
  */
 @Entity
-@Table(name = "mode_of_charging")
+@Table(name = "t_mode_of_charging")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class ModeOfCharging implements Serializable {

@@ -18,7 +18,7 @@ export const Login = () => {
     setShowModal(true);
   }, []);
 
-  const handleLogin = (username, password, rememberMe = false) => dispatch(login(username, password, rememberMe));
+  const handleLogin = (username: any, password: any, rememberMe = false) => dispatch(login(username, password, rememberMe));
 
   const handleClose = () => {
     setShowModal(false);
@@ -26,6 +26,7 @@ export const Login = () => {
   };
 
   const { from } = location.state || { from: { pathname: '/', search: location.search } };
+
   if (isAuthenticated) {
     return <Navigate to={from} replace />;
   }

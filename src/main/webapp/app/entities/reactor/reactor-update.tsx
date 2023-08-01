@@ -18,7 +18,7 @@ import { IImpellerType } from 'app/shared/model/impeller-type.model';
 import { getEntities as getImpellerTypes } from 'app/entities/impeller-type/impeller-type.reducer';
 import { IReactor } from 'app/shared/model/reactor.model';
 import { getEntity, updateEntity, createEntity, reset } from './reactor.reducer';
-
+import '../TableStyles.css';
 export const ReactorUpdate = () => {
   const dispatch = useAppDispatch();
 
@@ -88,118 +88,165 @@ export const ReactorUpdate = () => {
         };
 
   return (
-    <div>
+    <div className="table-edit-container">
       <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="pfdTest2App.reactor.home.createOrEditLabel" data-cy="ReactorCreateUpdateHeading">
-            <Translate contentKey="pfdTest2App.reactor.home.createOrEditLabel">Create or edit a Reactor</Translate>
-          </h2>
+        <Col md="12">
+          <h4 id="pfdTest2App.reactor.home.createOrEditLabel" data-cy="ReactorCreateUpdateHeading" className="table-view-edit-heading">
+            Create or Edit a Reactor
+          </h4>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="12">
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
-              {!isNew ? (
+            <div className="table-edit-form-container">
+              <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
+                {!isNew ? (
+                  <ValidatedField
+                    name="id"
+                    required
+                    readOnly
+                    id="reactor-id"
+                    label={translate('global.field.id')}
+                    validate={{ required: true }}
+                    style={{ borderRadius: '6px', border: '1px solid #000000', cursor: 'not-allowed' }}
+                    disabled
+                  />
+                ) : null}
                 <ValidatedField
-                  name="id"
-                  required
-                  readOnly
-                  id="reactor-id"
-                  label={translate('global.field.id')}
-                  validate={{ required: true }}
+                  label={translate('pfdTest2App.reactor.workingVolume')}
+                  id="reactor-workingVolume"
+                  name="workingVolume"
+                  data-cy="workingVolume"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
                 />
-              ) : null}
-              <ValidatedField
-                label={translate('pfdTest2App.reactor.workingVolume')}
-                id="reactor-workingVolume"
-                name="workingVolume"
-                data-cy="workingVolume"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('pfdTest2App.reactor.vesselId')}
-                id="reactor-vesselId"
-                name="vesselId"
-                data-cy="vesselId"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('pfdTest2App.reactor.bottomImpellerStirringVolume')}
-                id="reactor-bottomImpellerStirringVolume"
-                name="bottomImpellerStirringVolume"
-                data-cy="bottomImpellerStirringVolume"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('pfdTest2App.reactor.minimumTempSensingVolume')}
-                id="reactor-minimumTempSensingVolume"
-                name="minimumTempSensingVolume"
-                data-cy="minimumTempSensingVolume"
-                type="text"
-              />
-              <ValidatedField id="reactor-unit" name="unit" data-cy="unit" label={translate('pfdTest2App.reactor.unit')} type="select">
-                <option value="" key="0" />
-                {units
-                  ? units.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField id="reactor-block" name="block" data-cy="block" label={translate('pfdTest2App.reactor.block')} type="select">
-                <option value="" key="0" />
-                {blocks
-                  ? blocks.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField id="reactor-moc" name="moc" data-cy="moc" label={translate('pfdTest2App.reactor.moc')} type="select">
-                <option value="" key="0" />
-                {mOCS
-                  ? mOCS.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField
-                id="reactor-impellerType"
-                name="impellerType"
-                data-cy="impellerType"
-                label={translate('pfdTest2App.reactor.impellerType')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {impellerTypes
-                  ? impellerTypes.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/reactor" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
-                &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
-              </Button>
-              &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp;
-                <Translate contentKey="entity.action.save">Save</Translate>
-              </Button>
-            </ValidatedForm>
+                <ValidatedField
+                  label={translate('pfdTest2App.reactor.vesselId')}
+                  id="reactor-vesselId"
+                  name="vesselId"
+                  data-cy="vesselId"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                />
+                <ValidatedField
+                  label={translate('pfdTest2App.reactor.bottomImpellerStirringVolume')}
+                  id="reactor-bottomImpellerStirringVolume"
+                  name="bottomImpellerStirringVolume"
+                  data-cy="bottomImpellerStirringVolume"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                />
+                <ValidatedField
+                  label={translate('pfdTest2App.reactor.minimumTempSensingVolume')}
+                  id="reactor-minimumTempSensingVolume"
+                  name="minimumTempSensingVolume"
+                  data-cy="minimumTempSensingVolume"
+                  type="text"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                />
+                <ValidatedField
+                  id="reactor-unit"
+                  name="unit"
+                  data-cy="unit"
+                  label={translate('pfdTest2App.reactor.unit')}
+                  type="select"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                >
+                  <option value="" key="0" />
+                  {units
+                    ? units.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+                <ValidatedField
+                  id="reactor-block"
+                  name="block"
+                  data-cy="block"
+                  label={translate('pfdTest2App.reactor.block')}
+                  type="select"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                >
+                  <option value="" key="0" />
+                  {blocks
+                    ? blocks.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+                <ValidatedField
+                  id="reactor-moc"
+                  name="moc"
+                  data-cy="moc"
+                  label={translate('pfdTest2App.reactor.moc')}
+                  type="select"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                >
+                  <option value="" key="0" />
+                  {mOCS
+                    ? mOCS.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+                <ValidatedField
+                  id="reactor-impellerType"
+                  name="impellerType"
+                  data-cy="impellerType"
+                  label={translate('pfdTest2App.reactor.impellerType')}
+                  type="select"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                >
+                  <option value="" key="0" />
+                  {impellerTypes
+                    ? impellerTypes.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+                <div className="table-buttons-container">
+                  <Button
+                    className="border-radius"
+                    tag={Link}
+                    id="cancel-save"
+                    data-cy="entityCreateCancelButton"
+                    to="/reactor"
+                    replace
+                    color="secondary"
+                  >
+                    <FontAwesomeIcon icon="arrow-left" />
+                    &nbsp;
+                    <span className="d-none d-md-inline">
+                      <Translate contentKey="entity.action.back">Back</Translate>
+                    </span>
+                  </Button>
+                  &nbsp;
+                  <Button
+                    className="border-radius"
+                    color="success"
+                    id="save-entity"
+                    data-cy="entityCreateSaveButton"
+                    type="submit"
+                    disabled={updating}
+                  >
+                    <FontAwesomeIcon icon="save" />
+                    &nbsp;
+                    <Translate contentKey="entity.action.save">Save</Translate>
+                  </Button>
+                </div>
+              </ValidatedForm>
+            </div>
           )}
         </Col>
       </Row>

@@ -10,7 +10,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A MOC.
  */
 @Entity
-@Table(name = "moc")
+@Table(name = "t_moc")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class MOC implements Serializable {

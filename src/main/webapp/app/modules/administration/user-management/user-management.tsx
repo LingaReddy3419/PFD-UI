@@ -10,7 +10,7 @@ import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.cons
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { getUsersAsAdmin, updateUser } from './user-management.reducer';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-
+import '../../../entities/TableStyles.css';
 export const UserManagement = () => {
   const dispatch = useAppDispatch();
 
@@ -96,47 +96,50 @@ export const UserManagement = () => {
 
   return (
     <div>
-      <h2 id="user-management-page-heading" data-cy="userManagementPageHeading">
-        <Translate contentKey="userManagement.home.title">Users</Translate>
+      <h4 id="user-management-page-heading" data-cy="userManagementPageHeading">
+        <h3 className="table-main-heading">
+          {' '}
+          <Translate contentKey="userManagement.home.title">Users</Translate>
+        </h3>
         <div className="d-flex justify-content-end">
-          <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
+          <Button className="me-2 border-radius" color="secondary" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
             <Translate contentKey="userManagement.home.refreshListLabel">Refresh List</Translate>
           </Button>
-          <Link to="new" className="btn btn-primary jh-create-entity">
+          <Link to="new" className="btn btn-success jh-create-entity  border-radius">
             <FontAwesomeIcon icon="plus" /> <Translate contentKey="userManagement.home.createLabel">Create a new user</Translate>
           </Link>
         </div>
-      </h2>
+      </h4>
       <Table responsive striped>
         <thead>
           <tr>
-            <th className="hand" onClick={sort('id')}>
+            <th className="hand  font-size" onClick={sort('id')}>
               <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('id')} />
             </th>
-            <th className="hand" onClick={sort('login')}>
+            <th className="hand font-size" onClick={sort('login')}>
               <Translate contentKey="userManagement.login">Login</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('login')} />
             </th>
-            <th className="hand" onClick={sort('email')}>
+            <th className="hand font-size" onClick={sort('email')}>
               <Translate contentKey="userManagement.email">Email</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('email')} />
             </th>
             <th />
-            <th className="hand" onClick={sort('langKey')}>
+            <th className="hand font-size" onClick={sort('langKey')}>
               <Translate contentKey="userManagement.langKey">Lang Key</Translate>{' '}
               <FontAwesomeIcon icon={getSortIconByFieldName('langKey')} />
             </th>
-            <th>
+            <th className="hand font-size">
               <Translate contentKey="userManagement.profiles">Profiles</Translate>
             </th>
-            <th className="hand" onClick={sort('createdDate')}>
+            <th className="hand font-size" onClick={sort('createdDate')}>
               <Translate contentKey="userManagement.createdDate">Created Date</Translate>{' '}
               <FontAwesomeIcon icon={getSortIconByFieldName('createdDate')} />
             </th>
-            <th className="hand" onClick={sort('lastModifiedBy')}>
+            <th className="hand font-size" onClick={sort('lastModifiedBy')}>
               <Translate contentKey="userManagement.lastModifiedBy">Last Modified By</Translate>{' '}
               <FontAwesomeIcon icon={getSortIconByFieldName('lastModifiedBy')} />
             </th>
-            <th id="modified-date-sort" className="hand" onClick={sort('lastModifiedDate')}>
+            <th id="modified-date-sort" className="hand font-size" onClick={sort('lastModifiedDate')}>
               <Translate contentKey="userManagement.lastModifiedDate">Last Modified Date</Translate>{' '}
               <FontAwesomeIcon icon={getSortIconByFieldName('lastModifiedDate')} />
             </th>
@@ -146,14 +149,14 @@ export const UserManagement = () => {
         <tbody>
           {users.map((user, i) => (
             <tr id={user.login} key={`user-${i}`}>
-              <td>
+              <td className="font-size">
                 <Button tag={Link} to={user.login} color="link" size="sm">
                   {user.id}
                 </Button>
               </td>
-              <td>{user.login}</td>
-              <td>{user.email}</td>
-              <td>
+              <td className="font-size">{user.login}</td>
+              <td className="font-size">{user.email}</td>
+              <td className="font-size">
                 {user.activated ? (
                   <Button color="success" onClick={toggleActive(user)}>
                     <Translate contentKey="userManagement.activated">Activated</Translate>
@@ -164,8 +167,8 @@ export const UserManagement = () => {
                   </Button>
                 )}
               </td>
-              <td>{user.langKey}</td>
-              <td>
+              <td className="font-size">{user.langKey}</td>
+              <td className="font-size">
                 {user.authorities
                   ? user.authorities.map((authority, j) => (
                       <div key={`user-auth-${i}-${j}`}>
@@ -174,34 +177,40 @@ export const UserManagement = () => {
                     ))
                   : null}
               </td>
-              <td>
+              <td className="font-size">
                 {user.createdDate ? <TextFormat value={user.createdDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid /> : null}
               </td>
-              <td>{user.lastModifiedBy}</td>
-              <td>
+              <td className="font-size">{user.lastModifiedBy}</td>
+              <td className="font-size">
                 {user.lastModifiedDate ? (
                   <TextFormat value={user.lastModifiedDate} type="date" format={APP_DATE_FORMAT} blankOnInvalid />
                 ) : null}
               </td>
-              <td className="text-end">
+              <td className="text-end buttons-padding">
                 <div className="btn-group flex-btn-group-container">
-                  <Button tag={Link} to={user.login} color="info" size="sm">
+                  <Button tag={Link} to={user.login} size="sm" className="table-icon green">
                     <FontAwesomeIcon icon="eye" />{' '}
-                    <span className="d-none d-md-inline">
+                    {/* <span className="d-none d-md-inline">
                       <Translate contentKey="entity.action.view">View</Translate>
-                    </span>
+                    </span> */}
                   </Button>
-                  <Button tag={Link} to={`${user.login}/edit`} color="primary" size="sm">
+                  <Button tag={Link} to={`${user.login}/edit`} size="sm" className="table-icon blue">
                     <FontAwesomeIcon icon="pencil-alt" />{' '}
-                    <span className="d-none d-md-inline">
+                    {/* <span className="d-none d-md-inline">
                       <Translate contentKey="entity.action.edit">Edit</Translate>
-                    </span>
+                    </span> */}
                   </Button>
-                  <Button tag={Link} to={`${user.login}/delete`} color="danger" size="sm" disabled={account.login === user.login}>
+                  <Button
+                    tag={Link}
+                    to={`${user.login}/delete`}
+                    size="sm"
+                    disabled={account.login === user.login}
+                    className="table-icon red"
+                  >
                     <FontAwesomeIcon icon="trash" />{' '}
-                    <span className="d-none d-md-inline">
+                    {/* <span className="d-none d-md-inline">
                       <Translate contentKey="entity.action.delete">Delete</Translate>
-                    </span>
+                    </span> */}
                   </Button>
                 </div>
               </td>

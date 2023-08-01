@@ -58,6 +58,7 @@ export const PasswordPage = () => {
                 required: { value: true, message: translate('global.messages.validate.newpassword.required') },
               }}
               data-cy="currentPassword"
+              style={{ borderRadius: '6px', border: '1px solid #000000', marginBottom: '10px' }}
             />
             <ValidatedField
               name="newPassword"
@@ -71,6 +72,7 @@ export const PasswordPage = () => {
               }}
               onChange={updatePassword}
               data-cy="newPassword"
+              style={{ borderRadius: '6px', border: '1px solid #000000', marginBottom: '10px' }}
             />
             <PasswordStrengthBar password={password} />
             <ValidatedField
@@ -85,8 +87,9 @@ export const PasswordPage = () => {
                 validate: v => v === password || translate('global.messages.error.dontmatch'),
               }}
               data-cy="confirmPassword"
+              style={{ borderRadius: '6px', border: '1px solid #000000', marginBottom: '10px' }}
             />
-            <Button color="success" type="submit" data-cy="submit">
+            <Button style={{ borderRadius: '6px' }} color="success" type="submit" data-cy="submit">
               <Translate contentKey="password.form.button">Save</Translate>
             </Button>
           </ValidatedForm>

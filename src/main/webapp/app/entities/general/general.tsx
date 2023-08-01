@@ -9,7 +9,7 @@ import { overrideSortStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { getEntities } from './general.reducer';
-
+import '../TableStyles.css';
 export const General = () => {
   const dispatch = useAppDispatch();
 
@@ -65,35 +65,43 @@ export const General = () => {
 
   return (
     <div>
-      <h2 id="general-heading" data-cy="GeneralHeading">
-        <Translate contentKey="pfdTest2App.general.home.title">Generals</Translate>
+      <h4 id="general-heading" data-cy="GeneralHeading">
+        <h3 className="table-main-heading">
+          {' '}
+          <Translate contentKey="pfdTest2App.general.home.title">Generals</Translate>
+        </h3>
         <div className="d-flex justify-content-end">
-          <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
+          <Button className="me-2 border-radius" color="secondary" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
             <Translate contentKey="pfdTest2App.general.home.refreshListLabel">Refresh List</Translate>
           </Button>
-          <Link to="/general/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+          <Link
+            to="/general/new"
+            className="btn btn-success jh-create-entity  border-radius"
+            id="jh-create-entity"
+            data-cy="entityCreateButton"
+          >
             <FontAwesomeIcon icon="plus" />
             &nbsp;
             <Translate contentKey="pfdTest2App.general.home.createLabel">Create new General</Translate>
           </Link>
         </div>
-      </h2>
+      </h4>
       <div className="table-responsive">
         {generalList && generalList.length > 0 ? (
           <Table responsive>
             <thead>
               <tr>
-                <th className="hand" onClick={sort('id')}>
+                <th className="hand font-size" onClick={sort('id')}>
                   <Translate contentKey="pfdTest2App.general.id">ID</Translate> <FontAwesomeIcon icon={getSortIconByFieldName('id')} />
                 </th>
-                <th>
+                <th className="font-size">
                   <Translate contentKey="pfdTest2App.general.operations">Operations</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
+                <th className="font-size">
                   <Translate contentKey="pfdTest2App.general.action">Action</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
+                <th className="font-size">
                   <Translate contentKey="pfdTest2App.general.modeOfCharging">Mode Of Charging</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
@@ -102,35 +110,49 @@ export const General = () => {
             <tbody>
               {generalList.map((general, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
-                  <td>
+                  <td className="font-size">
                     <Button tag={Link} to={`/general/${general.id}`} color="link" size="sm">
                       {general.id}
                     </Button>
                   </td>
-                  <td>{general.operations ? <Link to={`/operations/${general.operations.id}`}>{general.operations.id}</Link> : ''}</td>
+                  <td className="font-size">
+                    {general.operations ? <Link to={`/operations/${general.operations.id}`}>{general.operations.id}</Link> : ''}
+                  </td>
                   <td>{general.action ? <Link to={`/action/${general.action.id}`}>{general.action.id}</Link> : ''}</td>
-                  <td>
+                  <td className="font-size">
                     {general.modeOfCharging ? (
                       <Link to={`/mode-of-charging/${general.modeOfCharging.id}`}>{general.modeOfCharging.id}</Link>
                     ) : (
                       ''
                     )}
                   </td>
-                  <td className="text-end">
+                  <td className="text-end buttons-padding">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`/general/${general.id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                      <Button tag={Link} to={`/general/${general.id}`} size="sm" data-cy="entityDetailsButton" className="table-icon green">
                         <FontAwesomeIcon icon="eye" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.view">View</Translate>
                         </span>
                       </Button>
-                      <Button tag={Link} to={`/general/${general.id}/edit`} color="primary" size="sm" data-cy="entityEditButton">
+                      <Button
+                        tag={Link}
+                        to={`/general/${general.id}/edit`}
+                        size="sm"
+                        data-cy="entityEditButton"
+                        className="table-icon blue"
+                      >
                         <FontAwesomeIcon icon="pencil-alt" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.edit">Edit</Translate>
                         </span>
                       </Button>
-                      <Button tag={Link} to={`/general/${general.id}/delete`} color="danger" size="sm" data-cy="entityDeleteButton">
+                      <Button
+                        tag={Link}
+                        to={`/general/${general.id}/delete`}
+                        size="sm"
+                        data-cy="entityDeleteButton"
+                        className="table-icon red"
+                      >
                         <FontAwesomeIcon icon="trash" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.delete">Delete</Translate>

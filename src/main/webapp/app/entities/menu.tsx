@@ -10,12 +10,12 @@ const EntitiesMenu = () => {
       <MenuItem icon="asterisk" to="/block">
         <Translate contentKey="global.menu.entities.block" />
       </MenuItem>
-      <MenuItem icon="asterisk" to="/document">
+      {/* <MenuItem icon="asterisk" to="/document">
         <Translate contentKey="global.menu.entities.document" />
       </MenuItem>
       <MenuItem icon="asterisk" to="/image">
         <Translate contentKey="global.menu.entities.image" />
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem icon="asterisk" to="/impeller-type">
         <Translate contentKey="global.menu.entities.impellerType" />
       </MenuItem>
@@ -28,9 +28,9 @@ const EntitiesMenu = () => {
       <MenuItem icon="asterisk" to="/unit">
         <Translate contentKey="global.menu.entities.unit" />
       </MenuItem>
-      <MenuItem icon="asterisk" to="/video">
+      {/* <MenuItem icon="asterisk" to="/video">
         <Translate contentKey="global.menu.entities.video" />
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem icon="asterisk" to="/action">
         <Translate contentKey="global.menu.entities.action" />
       </MenuItem>

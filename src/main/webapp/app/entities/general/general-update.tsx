@@ -16,7 +16,7 @@ import { IModeOfCharging } from 'app/shared/model/mode-of-charging.model';
 import { getEntities as getModeOfChargings } from 'app/entities/mode-of-charging/mode-of-charging.reducer';
 import { IGeneral } from 'app/shared/model/general.model';
 import { getEntity, updateEntity, createEntity, reset } from './general.reducer';
-
+import '../TableStyles.css';
 export const GeneralUpdate = () => {
   const dispatch = useAppDispatch();
 
@@ -82,92 +82,116 @@ export const GeneralUpdate = () => {
         };
 
   return (
-    <div>
+    <div className="table-edit-container">
       <Row className="justify-content-center">
-        <Col md="8">
-          <h2 id="pfdTest2App.general.home.createOrEditLabel" data-cy="GeneralCreateUpdateHeading">
-            <Translate contentKey="pfdTest2App.general.home.createOrEditLabel">Create or edit a General</Translate>
-          </h2>
+        <Col md="12">
+          <h4 className="table-view-edit-heading" id="pfdTest2App.general.home.createOrEditLabel" data-cy="GeneralCreateUpdateHeading">
+            Create or Edit a General
+          </h4>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="12">
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
-              {!isNew ? (
+            <div className="table-edit-form-container">
+              <ValidatedForm defaultValues={defaultValues()} onSubmit={saveEntity}>
+                {!isNew ? (
+                  <ValidatedField
+                    name="id"
+                    required
+                    readOnly
+                    id="general-id"
+                    label={translate('global.field.id')}
+                    validate={{ required: true }}
+                    style={{ borderRadius: '6px', border: '1px solid #000000', cursor: 'not-allowed' }}
+                    disabled
+                  />
+                ) : null}
                 <ValidatedField
-                  name="id"
-                  required
-                  readOnly
-                  id="general-id"
-                  label={translate('global.field.id')}
-                  validate={{ required: true }}
-                />
-              ) : null}
-              <ValidatedField
-                id="general-operations"
-                name="operations"
-                data-cy="operations"
-                label={translate('pfdTest2App.general.operations')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {operations
-                  ? operations.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField
-                id="general-action"
-                name="action"
-                data-cy="action"
-                label={translate('pfdTest2App.general.action')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {actions
-                  ? actions.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField
-                id="general-modeOfCharging"
-                name="modeOfCharging"
-                data-cy="modeOfCharging"
-                label={translate('pfdTest2App.general.modeOfCharging')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {modeOfChargings
-                  ? modeOfChargings.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/general" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
-                &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
-              </Button>
-              &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp;
-                <Translate contentKey="entity.action.save">Save</Translate>
-              </Button>
-            </ValidatedForm>
+                  id="general-operations"
+                  name="operations"
+                  data-cy="operations"
+                  label={translate('pfdTest2App.general.operations')}
+                  type="select"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                >
+                  <option value="" key="0" />
+                  {operations
+                    ? operations.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+                <ValidatedField
+                  id="general-action"
+                  name="action"
+                  data-cy="action"
+                  label={translate('pfdTest2App.general.action')}
+                  type="select"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                >
+                  <option value="" key="0" />
+                  {actions
+                    ? actions.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+                <ValidatedField
+                  id="general-modeOfCharging"
+                  name="modeOfCharging"
+                  data-cy="modeOfCharging"
+                  label={translate('pfdTest2App.general.modeOfCharging')}
+                  type="select"
+                  style={{ borderRadius: '6px', border: '1px solid #000000' }}
+                >
+                  <option value="" key="0" />
+                  {modeOfChargings
+                    ? modeOfChargings.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+                <div className="table-buttons-container">
+                  <Button
+                    className="border-radius"
+                    color="secondary"
+                    tag={Link}
+                    id="cancel-save"
+                    data-cy="entityCreateCancelButton"
+                    to="/general"
+                    replace
+                  >
+                    <FontAwesomeIcon icon="arrow-left" />
+                    &nbsp;
+                    <span className="d-none d-md-inline">
+                      <Translate contentKey="entity.action.back">Back</Translate>
+                    </span>
+                  </Button>
+                  &nbsp;
+                  <Button
+                    className="border-radius"
+                    color="success"
+                    id="save-entity"
+                    data-cy="entityCreateSaveButton"
+                    type="submit"
+                    disabled={updating}
+                  >
+                    <FontAwesomeIcon icon="save" />
+                    &nbsp;
+                    <Translate contentKey="entity.action.save">Save</Translate>
+                  </Button>
+                </div>
+              </ValidatedForm>
+            </div>
           )}
         </Col>
       </Row>
